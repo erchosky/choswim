@@ -1,0 +1,9 @@
+import type { Challenge } from '../../types/models';
+
+export const BASE_CHALLENGES: Challenge[] = [
+  { id: 'weekly-5000', title: 'Nada 5.000m esta semana', description: 'Volumen solido para subir rank sin reventarte.', type: 'weekly', targetMetric: 'distance', targetValue: 5000, startDate: new Date(), endDate: new Date(Date.now() + 7 * 86400000), rewardXP: 250, status: 'active', difficulty: 'medium', createdBy: 'system', visibility: 'global' },
+  { id: 'three-sessions', title: '3 sesiones esta semana', description: 'La constancia gana a la motivacion suelta.', type: 'weekly', targetMetric: 'sessions', targetValue: 3, startDate: new Date(), endDate: new Date(Date.now() + 7 * 86400000), rewardXP: 180, status: 'active', difficulty: 'easy', createdBy: 'system', visibility: 'global' },
+  { id: 'kraken-boss', title: 'Derrota al Kraken', description: 'Boss challenge: 24.000 XP acumulados.', type: 'boss', targetMetric: 'xp', targetValue: 24000, startDate: new Date(), endDate: new Date(Date.now() + 30 * 86400000), rewardXP: 900, status: 'active', difficulty: 'boss', createdBy: 'system', visibility: 'global' },
+  { id: 'strait-crossing', title: 'Cruza el Estrecho', description: 'Completa 14.400m acumulados. Marruecos -> Espana en modo piscina.', type: 'location_distance', targetMetric: 'distance', targetValue: 14400, startDate: new Date(), endDate: new Date(Date.now() + 30 * 86400000), rewardXP: 500, status: 'active', difficulty: 'hard', createdBy: 'system', visibility: 'global' },
+  { id: 'technique-session', title: 'Sesion tecnica', description: 'Entrena drills y deja nota de sensaciones.', type: 'daily', targetMetric: 'sessions', targetValue: 1, startDate: new Date(), endDate: new Date(Date.now() + 86400000), rewardXP: 120, status: 'active', difficulty: 'easy', createdBy: 'system', visibility: 'global' }
+];

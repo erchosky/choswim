@@ -1,0 +1,24 @@
+[
+  {
+    "id": "reto-10k-acumulados",
+    "name": "Reto 10 km acumulados",
+    "description": "Primer bloque serio de volumen acumulado.",
+    "totalDistanceMeters": 10000,
+    "milestones": [
+      { "name": "2,5 km", "distanceMeters": 2500, "emotionalMessage": "Base semanal en marcha." },
+      { "name": "5 km", "distanceMeters": 5000, "emotionalMessage": "Ya hay volumen real." },
+      { "name": "10 km", "distanceMeters": 10000, "emotionalMessage": "Reto 10K completado." }
+    ]
+  },
+  {
+    "id": "reto-100-piscinas",
+    "name": "Reto 100 piscinas",
+    "description": "100 largos de piscina de 25m.",
+    "totalDistanceMeters": 2500,
+    "milestones": [
+      { "name": "25 piscinas", "distanceMeters": 625, "emotionalMessage": "Primer cuarto completado." },
+      { "name": "50 piscinas", "distanceMeters": 1250, "emotionalMessage": "Medio reto superado." },
+      { "name": "100 piscinas", "distanceMeters": 2500, "emotionalMessage": "100 piscinas desbloqueadas." }
+    ]
+  }
+]

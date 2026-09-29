@@ -1,0 +1,34 @@
+{
+  "name": "ChooseSwim",
+  "short_name": "ChooseSwim",
+  "description": "Natacion privada, gamificada y profesional para entrenar, competir y progresar.",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#03151f",
+  "theme_color": "#03151f",
+  "orientation": "portrait-primary",
+  "categories": ["fitness", "sports", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Registrar entreno",
+      "short_name": "Entreno",
+      "url": "/sessions/new",
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "IA Coach",
+      "short_name": "Coach",
+      "url": "/ai-coach",
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ]
+}

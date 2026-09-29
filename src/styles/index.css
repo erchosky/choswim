@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/*
+  Tema (antes en tailwind.config.ts). Los colores `app-*` leen variables RGB que
+  cambian con el tema claro/oscuro; Tailwind 4 aplica la opacidad (bg-app-bg/50) con color-mix.
+*/
+@theme {
+  --color-ink: #03151f;
+  --color-panel: #082331;
+  --color-surface: #0d2d3e;
+  --color-line: #1d4b61;
+  --color-aqua: #22d3ee;
+  --color-reef: #34d399;
+  --color-coral: #fb7185;
+  --color-gold: #fbbf24;
+
+  --shadow-glow: 0 0 40px rgba(34, 211, 238, 0.18);
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+/* `inline`: cada utilidad usa rgb(var(--rgb-*)) directamente, así el tema claro/oscuro funciona en cualquier elemento. */
+@theme inline {
+  --color-app-bg: rgb(var(--rgb-bg));
+  --color-app-panel: rgb(var(--rgb-panel));
+  --color-app-surface: rgb(var(--rgb-surface));
+  --color-app-line: rgb(var(--rgb-line));
+  --color-app-text: rgb(var(--rgb-text));
+  --color-app-muted: rgb(var(--rgb-muted));
+  --color-app-accent: rgb(var(--rgb-accent));
+  --color-app-good: rgb(var(--rgb-good));
+  --color-app-warn: rgb(var(--rgb-warn));
+  --color-app-danger: rgb(var(--rgb-danger));
+}
+
+/* Compatibilidad con Tailwind 3: bordes con color gris por defecto y cursor de puntero en botones. */
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --rgb-bg: 3 21 31;
+  --rgb-panel: 8 35 49;
+  --rgb-surface: 13 45 62;
+  --rgb-line: 29 75 97;
+  --rgb-text: 229 249 255;
+  --rgb-muted: 158 216 230;
+  --rgb-accent: 34 211 238;
+  --rgb-good: 52 211 153;
+  --rgb-warn: 251 191 36;
+  --rgb-danger: 251 113 133;
+  background: rgb(var(--rgb-bg));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --rgb-bg: 238 248 251;
+  --rgb-panel: 255 255 255;
+  --rgb-surface: 226 242 247;
+  --rgb-line: 173 205 215;
+  --rgb-text: 6 35 48;
+  --rgb-muted: 70 102 116;
+  --rgb-accent: 8 145 178;
+  --rgb-good: 5 150 105;
+  --rgb-warn: 180 83 9;
+  --rgb-danger: 225 29 72;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgb(var(--rgb-accent) / 0.16), transparent 34rem),
+    linear-gradient(180deg, rgb(var(--rgb-bg)) 0%, rgb(var(--rgb-surface) / 0.44) 48%, rgb(var(--rgb-bg)) 100%);
+  color: rgb(var(--rgb-text));
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.unlock-pulse {
+  animation: unlock-pulse 700ms ease-out;
+}
+
+@keyframes unlock-pulse {
+  0% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 rgb(var(--rgb-accent) / 0);
+  }
+  45% {
+    transform: scale(1.01);
+    box-shadow: 0 0 36px rgb(var(--rgb-accent) / 0.24);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgb(var(--rgb-accent) / 0);
+  }
+}

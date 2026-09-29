@@ -1,0 +1,278 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A00100000000000000000001 /* App/ChooseSwimSyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000001 /* App/ChooseSwimSyncApp.swift */; };
+		A00100000000000000000002 /* Services/AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000002 /* Services/AuthService.swift */; };
+		A00100000000000000000003 /* Services/HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000003 /* Services/HealthKitService.swift */; };
+		A00100000000000000000004 /* Services/FirestoreSessionUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000004 /* Services/FirestoreSessionUploader.swift */; };
+		A00100000000000000000005 /* ViewModels/SyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000005 /* ViewModels/SyncViewModel.swift */; };
+		A00100000000000000000006 /* Views/ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000006 /* Views/ContentView.swift */; };
+		A00100000000000000000007 /* Views/LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000007 /* Views/LoginView.swift */; };
+		A00100000000000000000008 /* Views/SyncHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000008 /* Views/SyncHomeView.swift */; };
+		A00100000000000000000009 /* Views/WorkoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000009 /* Views/WorkoutRow.swift */; };
+		A00100000000000000000010 /* Models/ImportedSwimWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000010 /* Models/ImportedSwimWorkout.swift */; };
+		A00100000000000000000011 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A00600000000000000000001 /* FirebaseAuth */; };
+		A00100000000000000000012 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A00600000000000000000002 /* FirebaseFirestore */; };
+		A00100000000000000000013 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A00600000000000000000003 /* FirebaseCore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A00200000000000000000000 /* ChooseSwimSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChooseSwimSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00200000000000000000001 /* App/ChooseSwimSyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/ChooseSwimSyncApp.swift; sourceTree = "<group>"; };
+		A00200000000000000000002 /* Services/AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/AuthService.swift; sourceTree = "<group>"; };
+		A00200000000000000000003 /* Services/HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/HealthKitService.swift; sourceTree = "<group>"; };
+		A00200000000000000000004 /* Services/FirestoreSessionUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/FirestoreSessionUploader.swift; sourceTree = "<group>"; };
+		A00200000000000000000005 /* ViewModels/SyncViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels/SyncViewModel.swift; sourceTree = "<group>"; };
+		A00200000000000000000006 /* Views/ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/ContentView.swift; sourceTree = "<group>"; };
+		A00200000000000000000007 /* Views/LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/LoginView.swift; sourceTree = "<group>"; };
+		A00200000000000000000008 /* Views/SyncHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/SyncHomeView.swift; sourceTree = "<group>"; };
+		A00200000000000000000009 /* Views/WorkoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/WorkoutRow.swift; sourceTree = "<group>"; };
+		A00200000000000000000010 /* Models/ImportedSwimWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/ImportedSwimWorkout.swift; sourceTree = "<group>"; };
+		A00200000000000000000011 /* App/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = App/Info.plist; sourceTree = "<group>"; };
+		A00200000000000000000012 /* App/ChooseSwimSync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App/ChooseSwimSync.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A00300000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A00100000000000000000011 /* FirebaseAuth in Frameworks */,
+				A00100000000000000000012 /* FirebaseFirestore in Frameworks */,
+				A00100000000000000000013 /* FirebaseCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A00400000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A00400000000000000000002 /* ChooseSwimSync */,
+				A00400000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A00400000000000000000002 /* ChooseSwimSync */ = {
+			isa = PBXGroup;
+			children = (
+				A00200000000000000000001 /* App/ChooseSwimSyncApp.swift */,
+				A00200000000000000000002 /* Services/AuthService.swift */,
+				A00200000000000000000003 /* Services/HealthKitService.swift */,
+				A00200000000000000000004 /* Services/FirestoreSessionUploader.swift */,
+				A00200000000000000000005 /* ViewModels/SyncViewModel.swift */,
+				A00200000000000000000006 /* Views/ContentView.swift */,
+				A00200000000000000000007 /* Views/LoginView.swift */,
+				A00200000000000000000008 /* Views/SyncHomeView.swift */,
+				A00200000000000000000009 /* Views/WorkoutRow.swift */,
+				A00200000000000000000010 /* Models/ImportedSwimWorkout.swift */,
+				A00200000000000000000011 /* App/Info.plist */,
+				A00200000000000000000012 /* App/ChooseSwimSync.entitlements */,
+			);
+			path = ChooseSwimSync;
+			sourceTree = "<group>";
+		};
+		A00400000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A00200000000000000000000 /* ChooseSwimSync.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A00500000000000000000001 /* ChooseSwimSync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A00900000000000000000002 /* Build configuration list for PBXNativeTarget "ChooseSwimSync" */;
+			buildPhases = (
+				A00700000000000000000001 /* Sources */,
+				A00300000000000000000001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChooseSwimSync;
+			packageProductDependencies = (
+				A00600000000000000000001 /* FirebaseAuth */,
+				A00600000000000000000002 /* FirebaseFirestore */,
+				A00600000000000000000003 /* FirebaseCore */,
+			);
+			productName = ChooseSwimSync;
+			productReference = A00200000000000000000000 /* ChooseSwimSync.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A00800000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A00500000000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A00900000000000000000001 /* Build configuration list for PBXProject "ChooseSwimSync" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = es;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				es,
+				Base,
+			);
+			mainGroup = A00400000000000000000001;
+			packageReferences = (
+				A00600000000000000000004 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = A00400000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A00500000000000000000001 /* ChooseSwimSync */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A00700000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A00100000000000000000001 /* App/ChooseSwimSyncApp.swift in Sources */,
+				A00100000000000000000002 /* Services/AuthService.swift in Sources */,
+				A00100000000000000000003 /* Services/HealthKitService.swift in Sources */,
+				A00100000000000000000004 /* Services/FirestoreSessionUploader.swift in Sources */,
+				A00100000000000000000005 /* ViewModels/SyncViewModel.swift in Sources */,
+				A00100000000000000000006 /* Views/ContentView.swift in Sources */,
+				A00100000000000000000007 /* Views/LoginView.swift in Sources */,
+				A00100000000000000000008 /* Views/SyncHomeView.swift in Sources */,
+				A00100000000000000000009 /* Views/WorkoutRow.swift in Sources */,
+				A00100000000000000000010 /* Models/ImportedSwimWorkout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A01000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ChooseSwimSync/App/ChooseSwimSync.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChooseSwimSync/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erchosky.chooseswimsync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A01000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ChooseSwimSync/App/ChooseSwimSync.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChooseSwimSync/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erchosky.chooseswimsync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		A01000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A01000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A00900000000000000000001 /* Build configuration list for PBXProject "ChooseSwimSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A01000000000000000000003 /* Debug */,
+				A01000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A00900000000000000000002 /* Build configuration list for PBXNativeTarget "ChooseSwimSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A01000000000000000000001 /* Debug */,
+				A01000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A00600000000000000000004 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.19.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A00600000000000000000001 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A00600000000000000000004 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A00600000000000000000002 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A00600000000000000000004 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		A00600000000000000000003 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A00600000000000000000004 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A00800000000000000000001 /* Project object */;
+}

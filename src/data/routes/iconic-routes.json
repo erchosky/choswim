@@ -1,0 +1,24 @@
+[
+  {
+    "id": "cruzar-estrecho",
+    "name": "Cruzar el Estrecho",
+    "description": "Reto simbólico Marruecos -> España.",
+    "totalDistanceMeters": 14400,
+    "milestones": [
+      { "name": "Salida", "distanceMeters": 1000, "emotionalMessage": "Primer kilómetro hacia el Estrecho." },
+      { "name": "Mitad del cruce", "distanceMeters": 7200, "emotionalMessage": "Ya estás en mitad del reto grande." },
+      { "name": "Costa final", "distanceMeters": 14400, "emotionalMessage": "Has cruzado simbólicamente el Estrecho." }
+    ]
+  },
+  {
+    "id": "madrid-valencia",
+    "name": "Madrid -> Valencia",
+    "description": "Ruta acumulada de larga duración.",
+    "totalDistanceMeters": 355000,
+    "milestones": [
+      { "name": "Salida de Madrid", "distanceMeters": 10000, "emotionalMessage": "Ya no es una sesión: es una expedición." },
+      { "name": "Meseta", "distanceMeters": 100000, "emotionalMessage": "Constancia seria desbloqueada." },
+      { "name": "Valencia", "distanceMeters": 355000, "emotionalMessage": "Destino icónico completado." }
+    ]
+  }
+]

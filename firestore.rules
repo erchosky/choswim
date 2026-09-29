@@ -1,0 +1,299 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc(uid) {
+      return get(/databases/$(database)/documents/users/$(uid));
+    }
+
+    function isAdmin() {
+      return signedIn() && (
+        request.auth.token.admin == true ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          userDoc(request.auth.uid).data.role == 'admin')
+      );
+    }
+
+    function owns(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function immutableRoleOnUpdate() {
+      return !('role' in request.resource.data.diff(resource.data).affectedKeys());
+    }
+
+    // Campos editables del perfil (onboarding y ajustes).
+    function profileFields() {
+      return [
+        'displayName',
+        'heightCm',
+        'weightKg',
+        'birthYear',
+        'mainGoal',
+        'poolLengthMeters',
+        'level',
+        'weeklyTargetMeters',
+        'preferredSessionDuration',
+        'usesWaterWeights',
+        'profileCompleted',
+        'themePreference'
+      ];
+    }
+
+    // Al crear el perfil solo se aceptan campos de perfil: XP, estadísticas y ranking
+    // los escriben únicamente las Cloud Functions.
+    function validUserCreate(uid) {
+      return request.resource.data.keys().hasOnly(
+          profileFields().concat(['uid', 'email', 'role', 'xp', 'streakDays', 'createdAt', 'updatedAt']))
+        && request.resource.data.uid == uid
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.role == 'user'
+        && request.resource.data.profileCompleted is bool
+        && (!('xp' in request.resource.data) || request.resource.data.xp == 0)
+        && (!('streakDays' in request.resource.data) || request.resource.data.streakDays == 0);
+    }
+
+    function validUserUpdate(uid) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(profileFields().concat(['updatedAt']))
+      && request.resource.data.uid == uid
+      && request.resource.data.email == request.auth.token.email
+      && request.resource.data.role == resource.data.role;
+    }
+
+    function validSessionCreate() {
+      return request.resource.data.keys().hasOnly([
+        'userId',
+        'source',
+        'healthKitWorkoutUUID',
+        'date',
+        'startDate',
+        'endDate',
+        'poolLengthMeters',
+        'totalDistanceMeters',
+        'totalTimeMinutes',
+        'activeTimeMinutes',
+        'restTimeMinutes',
+        'laps',
+        'style',
+        'intensity',
+        'perceivedEffort',
+        'waterWeights',
+        'goal',
+        'notes',
+        'moodBefore',
+        'moodAfter',
+        'fatigue',
+        'perceivedFatigue',
+        'breathingDifficulty',
+        'painNotes',
+        'breathFeeling',
+        'activeEnergyKcal',
+        'totalEnergyKcal',
+        'avgHeartRate',
+        'maxHeartRate',
+        'avgSwolf',
+        'bestSwolf',
+        'worstSwolf',
+        'gymBeforeSession',
+        'swimmingLocationType',
+        'lapsData',
+        'processingStatus',
+        'createdAt',
+        'updatedAt'
+      ])
+      && request.resource.data.userId == request.auth.uid
+      && (!('source' in request.resource.data) || request.resource.data.source in ['manual', 'apple_health'])
+      && (!('healthKitWorkoutUUID' in request.resource.data) || request.resource.data.healthKitWorkoutUUID is string)
+      && request.resource.data.totalDistanceMeters is number
+      && request.resource.data.totalDistanceMeters >= 25
+      && request.resource.data.totalDistanceMeters <= 50000
+      && request.resource.data.activeTimeMinutes is number
+      && request.resource.data.activeTimeMinutes > 0
+      && request.resource.data.totalTimeMinutes is number
+      && request.resource.data.totalTimeMinutes > 0
+      && request.resource.data.activeTimeMinutes <= request.resource.data.totalTimeMinutes
+      && request.resource.data.poolLengthMeters in [20, 25, 50]
+      && request.resource.data.laps is number
+      && request.resource.data.laps >= 1
+      && request.resource.data.laps <= 5000
+      && request.resource.data.intensity is number
+      && request.resource.data.intensity >= 1
+      && request.resource.data.intensity <= 10
+      && request.resource.data.perceivedEffort is number
+      && request.resource.data.perceivedEffort >= 1
+      && request.resource.data.perceivedEffort <= 10
+      && request.resource.data.processingStatus == 'pending'
+      && request.resource.data.createdAt is timestamp
+      && request.resource.data.updatedAt is timestamp
+      && (!('notes' in request.resource.data) || (request.resource.data.notes is string && request.resource.data.notes.size() <= 1000))
+      && (!('painNotes' in request.resource.data) || (request.resource.data.painNotes is string && request.resource.data.painNotes.size() <= 400));
+    }
+
+    function validAppleHealthNotesUpdate() {
+      return resource.data.source == 'apple_health'
+      && resource.data.userId == request.auth.uid
+      && request.resource.data.userId == request.auth.uid
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+        'notes',
+        'updatedAt'
+      ]);
+    }
+
+    function validSessionUpdate() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+        'date',
+        'poolLengthMeters',
+        'totalDistanceMeters',
+        'totalTimeMinutes',
+        'activeTimeMinutes',
+        'restTimeMinutes',
+        'laps',
+        'style',
+        'intensity',
+        'perceivedEffort',
+        'waterWeights',
+        'goal',
+        'notes',
+        'moodBefore',
+        'moodAfter',
+        'fatigue',
+        'painNotes',
+        'breathFeeling',
+        'processingStatus',
+        'updatedAt'
+      ])
+      && (!('source' in resource.data) || resource.data.source != 'apple_health')
+      && resource.data.userId == request.auth.uid
+      && request.resource.data.userId == request.auth.uid
+      && request.resource.data.totalDistanceMeters is number
+      && request.resource.data.totalDistanceMeters >= 25
+      && request.resource.data.totalDistanceMeters <= 50000
+      && request.resource.data.totalTimeMinutes is number
+      && request.resource.data.totalTimeMinutes > 0
+      && request.resource.data.activeTimeMinutes is number
+      && request.resource.data.activeTimeMinutes > 0
+      && request.resource.data.activeTimeMinutes <= request.resource.data.totalTimeMinutes
+      && request.resource.data.poolLengthMeters in [20, 25, 50]
+      && request.resource.data.intensity is number
+      && request.resource.data.intensity >= 1
+      && request.resource.data.intensity <= 10
+      && request.resource.data.perceivedEffort is number
+      && request.resource.data.perceivedEffort >= 1
+      && request.resource.data.perceivedEffort <= 10
+      && (!('processingStatus' in request.resource.data.diff(resource.data).affectedKeys()) || request.resource.data.processingStatus == 'pending')
+      && (!('notes' in request.resource.data) || (request.resource.data.notes is string && request.resource.data.notes.size() <= 1000))
+      && (!('painNotes' in request.resource.data) || (request.resource.data.painNotes is string && request.resource.data.painNotes.size() <= 400));
+    }
+
+    function validDistanceRoute() {
+      return request.resource.data.keys().hasOnly([
+        'userId',
+        'name',
+        'fromLabel',
+        'toLabel',
+        'distanceMeters',
+        'category',
+        'isFavorite',
+        'createdAt',
+        'updatedAt'
+      ])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.distanceMeters is number
+        && request.resource.data.distanceMeters > 0
+        && request.resource.data.distanceMeters <= 1000000
+        && request.resource.data.category in ['personal', 'city', 'challenge', 'funny']
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.fromLabel is string
+        && request.resource.data.fromLabel.size() <= 60
+      && request.resource.data.toLabel is string
+      && request.resource.data.toLabel.size() <= 60
+      && request.resource.data.isFavorite is bool;
+    }
+
+    match /users/{uid} {
+      allow read: if owns(uid) || isAdmin();
+      allow create: if owns(uid) && validUserCreate(uid);
+      allow update: if (
+        owns(uid)
+        && validUserUpdate(uid)
+      ) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /swimSessions/{sessionId} {
+      // `resource` es null en documentos inexistentes. La app iOS comprueba si un entreno ya
+      // se importó leyendo su id determinista (apple_health_<uid>_<uuid>): se permite solo con el uid propio.
+      allow get: if isAdmin()
+        || (resource != null && owns(resource.data.userId))
+        || (resource == null && signedIn() && sessionId.matches('apple_health_' + request.auth.uid + '_.+'));
+      allow list: if isAdmin() || owns(resource.data.userId);
+      allow create: if signedIn() && validSessionCreate();
+      allow update: if isAdmin() || (signedIn() && (validSessionUpdate() || validAppleHealthNotesUpdate()));
+      allow delete: if isAdmin() || owns(resource.data.userId);
+    }
+
+    match /locations/{locationId} {
+      allow read: if isAdmin() || owns(resource.data.userId);
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin() || owns(resource.data.userId);
+    }
+
+    match /distanceRoutes/{routeId} {
+      allow read: if signedIn() && (resource.data.userId == request.auth.uid || resource.data.userId == 'global' || isAdmin());
+      allow create: if isAdmin() || (signedIn()
+        && validDistanceRoute());
+      allow update: if isAdmin() || (signedIn()
+        && resource.data.userId == request.auth.uid
+        && validDistanceRoute());
+      allow delete: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+    }
+
+    match /challenges/{challengeId} {
+      allow read: if signedIn() && (
+        resource.data.visibility in ['global', 'friends'] ||
+        resource.data.createdBy == request.auth.uid ||
+        isAdmin()
+      );
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /userChallenges/{id} {
+      allow read: if isAdmin() || owns(resource.data.userId);
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin() || owns(resource.data.userId);
+    }
+
+    match /trainingPlans/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /aiReports/{id} {
+      allow read: if isAdmin() || owns(resource.data.userId);
+      allow write: if false;
+    }
+
+    match /leaderboardSnapshots/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /appConfig/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /motivationalMessages/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /logs/{id} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "sol-palacio-real",
+    "name": "Puerta del Sol -> Palacio Real",
+    "description": "Ruta urbana de ejemplo (~1 km) para convertir una sesión corta en avance real por Madrid.",
+    "startCoords": { "lat": 40.4169, "lng": -3.7035 },
+    "endCoords": { "lat": 40.418, "lng": -3.7143 },
+    "totalDistanceMeters": 1000,
+    "milestones": [
+      { "name": "Calle Mayor", "distanceMeters": 100, "emotionalMessage": "Primeros metros por el centro." },
+      { "name": "Plaza Mayor", "distanceMeters": 520, "emotionalMessage": "Ya has cruzado media ruta." },
+      { "name": "Palacio Real", "distanceMeters": 1000, "emotionalMessage": "Ruta completada." }
+    ]
+  },
+  {
+    "id": "sol-retiro",
+    "name": "Puerta del Sol -> Parque del Retiro",
+    "description": "Ruta media para sesiones de resistencia.",
+    "startCoords": { "lat": 40.4169, "lng": -3.7035 },
+    "endCoords": { "lat": 40.42, "lng": -3.6887 },
+    "totalDistanceMeters": 1900,
+    "milestones": [
+      { "name": "Cibeles", "distanceMeters": 1200, "emotionalMessage": "Ya ves la fuente de Cibeles." },
+      { "name": "Puerta de Alcalá", "distanceMeters": 1600, "emotionalMessage": "Casi en el parque." },
+      { "name": "Retiro", "distanceMeters": 1900, "emotionalMessage": "Ruta completada." }
+    ]
+  }
+]
