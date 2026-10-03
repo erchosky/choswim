@@ -1,15 +1,17 @@
 # ChooseSwim
 
-Aplicación para **registrar y gamificar entrenamientos de natación**. Es una PWA (se instala en el móvil como una app) con:
+Para apuntar los entrenos de piscina y darle algo de juego al asunto. ChooseSwim convierte los metros en XP, rangos, rachas y retos, porque llegar a Poseidón tiene más gracia que dejar otro número perdido en una libreta.
 
-- Registro de sesiones de piscina: distancia, tiempos, estilo, intensidad y sensaciones.
-- XP, rangos (de Bronce a Poseidón), rachas, trofeos, bosses semanales y retos.
-- Ranking privado entre amigos.
-- "Rutas simbólicas": convierte los metros nadados en recorridos reales («hoy has nadado lo que hay de Sol al Palacio Real»).
-- Entrenador con IA (OpenAI) que analiza sesiones y propone planes semanales.
-- Una app auxiliar para iPhone que importa los entrenos de natación del Apple Watch (HealthKit).
+Se instala en el móvil como una app y trae:
 
-El XP y las estadísticas oficiales se calculan en el servidor (Cloud Functions), así que nadie puede inventarse puntos desde el navegador.
+- Sesiones con distancia, tiempos, estilo, intensidad y sensaciones.
+- XP, rangos de Bronce a Poseidón, rachas, trofeos, jefes semanales y retos.
+- Clasificación privada entre amigos.
+- Rutas simbólicas: tus metros se convierten en recorridos reales, como «hoy has nadado lo que hay de Sol al Palacio Real».
+- Entrenador con IA de OpenAI para analizar sesiones y proponer planes semanales.
+- Una app auxiliar para iPhone que importa los entrenos de natación del Apple Watch mediante HealthKit.
+
+Los puntos y las estadísticas oficiales los calcula el servidor con Cloud Functions. El navegador no puede sacarse XP de la manga.
 
 ## Tecnologías
 
@@ -23,7 +25,7 @@ El XP y las estadísticas oficiales se calculan en el servidor (Cloud Functions)
 | iOS | SwiftUI, Swift 6, HealthKit, Firebase iOS SDK 12 |
 | Tests | Vitest, Testing Library, test runner de Node y emulador de Firestore |
 
-## Instalación paso a paso
+## Cómo ponerlo en marcha
 
 ### 1. Requisitos
 
@@ -34,7 +36,7 @@ El XP y las estadísticas oficiales se calculan en el servidor (Cloud Functions)
 ### 2. Descargar e instalar dependencias
 
 ```bash
-git clone <url-del-repositorio> choswim
+git clone https://github.com/erchosky/choswim.git choswim
 cd choswim
 nvm use            # opcional
 npm ci
@@ -156,7 +158,7 @@ docs/             Arquitectura, seguridad, PWA, App Check, roadmap
 
 La seguridad real está en `firestore.rules` y en las Cloud Functions. Las guardas de React solo controlan la navegación.
 
-## Limitaciones conocidas
+## Lo que queda pendiente
 
 - El ranking se actualiza cuando un administrador ejecuta `updateLeaderboardSnapshot` (no hay tarea programada).
 - App Check está documentado ([docs/app-check.md](docs/app-check.md)) pero no activado.
