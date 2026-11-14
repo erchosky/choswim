@@ -1,6 +1,6 @@
 # ChooseSwim
 
-Para apuntar los entrenos de piscina y darle algo de juego al asunto. ChooseSwim convierte los metros en XP, rangos, rachas y retos, porque llegar a Poseidón tiene más gracia que dejar otro número perdido en una libreta.
+Apuntar los entrenos de piscina está bien, pero darles un poco de juego mola más. **ChooseSwim** convierte los metros en XP, rangos, rachas y retos para que cada sesión cuente y puedas ir a por Poseidón.
 
 Se instala en el móvil como una app y trae:
 
