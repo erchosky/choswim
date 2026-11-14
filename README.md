@@ -1,9 +1,14 @@
 # ChooseSwim
 
-Apuntar los entrenos de piscina está bien, pero darles un poco de juego mola más. **ChooseSwim** convierte los metros en XP, rangos, rachas y retos para que cada sesión cuente y puedas ir a por Poseidón.
+Registro de entrenamientos de natación con distancia, tiempos, estilos y sensaciones. Los metros se convierten en experiencia, retos y recorridos para seguir la evolución de cada sesión.
 
-Se instala en el móvil como una app y trae:
+Incluye una PWA, clasificación privada entre amigos, entrenador con IA y una aplicación auxiliar para importar sesiones desde HealthKit. Los puntos oficiales se calculan en el servidor.
 
+[Funciones principales](#funciones-principales) · [Tecnologías](#tecnologías) · [Cómo ponerlo en marcha](#cómo-ponerlo-en-marcha) · [Variables de entorno](#variables-de-entorno) · [Comandos disponibles](#comandos-disponibles) · [Estructura](#estructura)
+
+---
+
+## Funciones principales
 - Sesiones con distancia, tiempos, estilo, intensidad y sensaciones.
 - XP, rangos de Bronce a Poseidón, rachas, trofeos, jefes semanales y retos.
 - Clasificación privada entre amigos.
@@ -119,7 +124,7 @@ Guía completa en [ios-sync/ChooseSwimSync/README.md](ios-sync/ChooseSwimSync/RE
 
 Nunca pongas secretos en variables `VITE_`: acaban dentro del JavaScript público.
 
-## Scripts
+## Comandos disponibles
 
 | Comando | Qué hace |
 | --- | --- |
